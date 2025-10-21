@@ -1,0 +1,18 @@
+# Python Virtual Environment
+# This folder contains the interpreter and all installed packages.
+/venv
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Environment variables
+# Good practice to include this for the future.
+.env
+
+# Editor and IDE directories
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
