@@ -128,6 +128,28 @@ app.post('/api/auth/login', async (req, res) => {
 
 // --- 2. PROTECTED PRODUCT ROUTES (CRUD) ---
 
+
+// @route   GET api/artists/my-products
+    // @desc    Get all products for the logged-in artist
+    // @access  Private
+app.get('/api/artists/my-products', authMiddleware, async (req, res) => {
+      try {
+        const products = await pool.query(
+          'SELECT * FROM products WHERE artist_id = $1 ORDER BY created_at DESC',
+          [req.artist.id]
+        );
+        res.json(products.rows);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+      }
+ });
+
+    // @route   POST api/products
+    // @desc    Create a new product
+    // ... (rest of the file)
+
+
 // @route   POST api/products
 // @desc    Create a new product
 // @access  Private
